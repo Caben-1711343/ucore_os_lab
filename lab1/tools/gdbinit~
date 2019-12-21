@@ -1,0 +1,8 @@
+set architecture i8086
+target remote :1234
+define hook-stop
+x/i $pc
+end
+b *0x7c00 #在0x7c00打断点
+continue    #继续执行代码
+x /10i $pc    #查看当前要执行的十个代码
